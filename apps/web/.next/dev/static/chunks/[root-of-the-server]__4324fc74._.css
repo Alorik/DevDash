@@ -433,6 +433,10 @@
     inset-inline-start: var(--spacing);
   }
 
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * .5);
+  }
+
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -652,6 +656,10 @@
   .tracking-widest {
     --tw-tracking: var(--tracking-widest);
     letter-spacing: var(--tracking-widest);
+  }
+
+  .text-emerald-500 {
+    color: var(--color-emerald-500);
   }
 
   .text-emerald-900 {

@@ -1,10 +1,10 @@
 "use client";
 
-
 import { useEffect, useState } from "react";
 import StreakCard from "./streakCalculator";
 import { groupIntoWeeks } from "../../app/lib/analytics/daysToWeeks";
 import { getMonthsLabels } from "../../app/lib/analytics/getMonthsLabels";
+import { fetchContributions } from "../../app/lib/github/fetchContribution";
 
 type Day = {
   date: string;
@@ -21,13 +21,18 @@ function getColorClass(count: number) {
 
 export default function ContributionHeatmap() {
   const [days, setDays] = useState<Day[]>([]);
+  const [totalContributions, setTotalContributions] = useState(0);
+
   const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
-  useEffect(() => {
-    fetch("/api/analytics/overview")
-      .then((res) => res.json())
-      .then((data) => setDays(data.days));
-  }, []);
+useEffect(() => {
+  fetch("/api/analytics/overview")
+    .then((res) => res.json())
+    .then((data) => {
+      setDays(data.days);
+      setTotalContributions(data.totalContributions); // add this
+    });
+}, []);
 
   if (!days.length) {
     return (
@@ -38,7 +43,6 @@ export default function ContributionHeatmap() {
       </div>
     );
   }
-
   const weeks = groupIntoWeeks(days) as Day[][];
   const months = getMonthsLabels(weeks);
 
@@ -48,6 +52,12 @@ export default function ContributionHeatmap() {
         <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
           Activity Heatmap
         </h3>
+        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+          <span className="text-emerald-500 font-semibold">
+            {totalContributions}
+          </span>{" "}
+          contributions this year
+        </p>
 
         {/* Legend */}
         <div className="flex flex-col items-center text-[10px] text-gray-400 font-bold uppercase tracking-widest">

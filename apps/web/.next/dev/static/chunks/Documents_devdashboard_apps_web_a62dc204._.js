@@ -143,6 +143,7 @@ function getColorClass(count) {
 function ContributionHeatmap() {
     _s();
     const [days, setDays] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [totalContributions, setTotalContributions] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     const DAY_LABELS = [
         "",
         "Mon",
@@ -157,7 +158,10 @@ function ContributionHeatmap() {
             fetch("/api/analytics/overview").then({
                 "ContributionHeatmap.useEffect": (res)=>res.json()
             }["ContributionHeatmap.useEffect"]).then({
-                "ContributionHeatmap.useEffect": (data)=>setDays(data.days)
+                "ContributionHeatmap.useEffect": (data)=>{
+                    setDays(data.days);
+                    setTotalContributions(data.totalContributions); // add this
+                }
             }["ContributionHeatmap.useEffect"]);
         }
     }["ContributionHeatmap.useEffect"], []);
@@ -169,12 +173,12 @@ function ContributionHeatmap() {
                 children: "FETCHING ACTIVITY..."
             }, void 0, false, {
                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                lineNumber: 35,
+                lineNumber: 40,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-            lineNumber: 34,
+            lineNumber: 39,
             columnNumber: 7
         }, this);
     }
@@ -191,7 +195,26 @@ function ContributionHeatmap() {
                         children: "Activity Heatmap"
                     }, void 0, false, {
                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                        lineNumber: 48,
+                        lineNumber: 52,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-[10px] text-gray-400 font-bold uppercase tracking-widest",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "text-emerald-500 font-semibold",
+                                children: totalContributions
+                            }, void 0, false, {
+                                fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
+                                lineNumber: 56,
+                                columnNumber: 11
+                            }, this),
+                            " ",
+                            "contributions this year"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
+                        lineNumber: 55,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -204,7 +227,7 @@ function ContributionHeatmap() {
                                         children: "Less"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                        lineNumber: 55,
+                                        lineNumber: 65,
                                         columnNumber: 13
                                     }, this),
                                     [
@@ -217,37 +240,37 @@ function ContributionHeatmap() {
                                             className: `w-2.5 h-2.5 rounded-[2px] ${getColorClass(lvl)}`
                                         }, lvl, false, {
                                             fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                            lineNumber: 57,
+                                            lineNumber: 67,
                                             columnNumber: 15
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "More"
                                     }, void 0, false, {
                                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                        lineNumber: 62,
+                                        lineNumber: 72,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                lineNumber: 54,
+                                lineNumber: 64,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$components$2f$heatmap$2f$streakCalculator$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                lineNumber: 64,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                        lineNumber: 53,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                lineNumber: 47,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -263,12 +286,12 @@ function ContributionHeatmap() {
                                 children: i === 0 || months[i] !== months[i - 1] ? month : ""
                             }, i, false, {
                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                lineNumber: 72,
+                                lineNumber: 82,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                        lineNumber: 70,
+                        lineNumber: 80,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -281,12 +304,12 @@ function ContributionHeatmap() {
                                         children: label
                                     }, i, false, {
                                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                        lineNumber: 86,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                lineNumber: 84,
+                                lineNumber: 94,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$Documents$2f$devdashboard$2f$apps$2f$web$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -307,39 +330,39 @@ function ContributionHeatmap() {
                     `
                                             }, day.date, false, {
                                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                                lineNumber: 97,
+                                                lineNumber: 107,
                                                 columnNumber: 19
                                             }, this))
                                     }, i, false, {
                                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                        lineNumber: 95,
+                                        lineNumber: 105,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                                lineNumber: 93,
+                                lineNumber: 103,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                        lineNumber: 82,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-                lineNumber: 68,
+                lineNumber: 78,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/Documents/devdashboard/apps/web/components/heatmap/ContributionHeap.tsx",
-        lineNumber: 46,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }
-_s(ContributionHeatmap, "mPcOYHTyVZ2XQV1Az4OdG7zolXo=");
+_s(ContributionHeatmap, "zl2Ts+CKQy88hSsDJsF8V5CotIM=");
 _c = ContributionHeatmap;
 var _c;
 __turbopack_context__.k.register(_c, "ContributionHeatmap");
