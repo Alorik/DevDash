@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///Users/nitinkirola/Documents/devdashboard/apps/web/app/page.tsx"],"sourcesContent":["\"use client\";\n\n\nimport { signIn, signOut, useSession } from \"next-auth/react\";\n\nexport default function Home() {\n  const { data: session, status } = useSession();\n\n  if (status === \"loading\") return <p>Loading...</p>;\n  setTimeout(() => {\n    console.log(\"SESSION:\", session);\n  }, 2000);\n\n  return (\n    <div>\n      {!session ? (\n        <button onClick={() => signIn(\"github\")}>Login with GitHub</button>\n      ) : (\n        <>\n          <p>Welcome {session.user?.name}</p>\n          <button onClick={() => signOut()}>Logout</button>\n        </>\n      )}\n\n      <div>\n      </div>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;AAGA;;;AAHA;;AAKe,SAAS;;IACtB,MAAM,EAAE,MAAM,OAAO,EAAE,MAAM,EAAE,GAAG,IAAA,2MAAU;IAE5C,IAAI,WAAW,WAAW,qBAAO,yOAAC;kBAAE;;;;;;IACpC,WAAW;QACT,QAAQ,GAAG,CAAC,YAAY;IAC1B,GAAG;IAEH,qBACE,yOAAC;;YACE,CAAC,wBACA,yOAAC;gBAAO,SAAS,IAAM,IAAA,uMAAM,EAAC;0BAAW;;;;;qCAEzC;;kCACE,yOAAC;;4BAAE;4BAAS,QAAQ,IAAI,EAAE;;;;;;;kCAC1B,yOAAC;wBAAO,SAAS,IAAM,IAAA,wMAAO;kCAAI;;;;;;;;0BAItC,yOAAC;;;;;;;;;;;AAIP;GAvBwB;;QACY,2MAAU;;;KADtB"}}]
-}
