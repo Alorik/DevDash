@@ -1,0 +1,971 @@
+[00:00:02.482] Server  LOG     ✓ Ready in 2.3s
+[00:00:16.551] Server  ERROR   ⨯ ./Documents/devdashboard/apps/web/app/page.tsx:3:1
+Module not found: Can't resolve '@/apps/web/components/repo'
+  1 | "use client";
+  2 |
+> 3 | import Repo from "@/apps/web/components/repo";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { signIn, signOut, useSession } from "next-auth/react";
+  5 |
+  6 | export default function Home() {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:00:18.489] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:3:1
+Module not found: Can't resolve '@/apps/web/components/repo'
+  1 | "use client";
+  2 |
+> 3 | import Repo from "@/apps/web/components/repo";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { signIn, signOut, useSession } from "next-auth/react";
+  5 |
+  6 | export default function Home() {
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:18.637] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:3:1
+Module not found: Can't resolve '@/apps/web/components/repo'
+  1 | "use client";
+  2 |
+> 3 | import Repo from "@/apps/web/components/repo";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { signIn, signOut, useSession } from "next-auth/react";
+  5 |
+  6 | export default function Home() {
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:18.637] Browser ERROR   [next-auth][error][CLIENT_FETCH_ERROR] 
+https://next-auth.js.org/errors#client_fetch_error Unexpected token '<', "<!DOCTYPE "... is not valid JSON {"error":{"message":"Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON","name":"SyntaxError","stack":"SyntaxError: Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"},"message":"Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON","url":"/api/auth/session"}
+[00:00:18.638] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:3:1
+Module not found: Can't resolve '@/apps/web/components/repo'
+  1 | "use client";
+  2 |
+> 3 | import Repo from "@/apps/web/components/repo";
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | import { signIn, signOut, useSession } from "next-auth/react";
+  5 |
+  6 | export default function Home() {
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[00:00:56.132] Server  LOG     ✓ Compiled in 99ms
+[00:01:23.527] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:23.528] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:23.954] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:23.954] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:24.309] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:24.309] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:24.989] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:24.989] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:25.265] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:25.265] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:26.127] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo 
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:26.127] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo 
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:26.730] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo /
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:26.730] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo /
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:01:27.150] Server  LOG     ✓ Compiled in 18ms
+[00:02:04.495] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:04.495] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:04.828] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:04.828] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.105] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.105] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.325] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.325] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.647] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repi
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:05.647] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repi
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:06.516] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:06.516] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:06.864] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:06.864] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:08.026] Server  LOG     ✓ Compiled in 15ms
+[00:02:16.766] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:16.767] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.300] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.300] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <R
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.687] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.687] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Re
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.909] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:17.909] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Rep
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.175] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.175] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repo
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.364] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repos
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.364] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Repos
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.563] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Reposi
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:18.563] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Reposi
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:19.135] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:7
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Reposit
+> 27 |       </div>
+     |       ^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Expression expected
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:19.135] Browser ERROR   ./Documents/devdashboard/apps/web/app/page.tsx:27:8
+Parsing ecmascript source code failed
+  25 |       <div>
+  26 | <Reposit
+> 27 |       </div>
+     |        ^^^^^
+  28 |     </div>
+  29 |   );
+  30 | }
+
+Unterminated regexp literal
+
+Import traces:
+  Client Component Browser:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component Browser]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./Documents/devdashboard/apps/web/app/page.tsx [Client Component SSR]
+    ./Documents/devdashboard/apps/web/app/page.tsx [Server Component]
+[00:02:20.879] Server  LOG     ✓ Compiled in 19ms
