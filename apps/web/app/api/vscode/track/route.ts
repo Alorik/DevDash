@@ -1,9 +1,15 @@
-import { NextRequest, NextResponse } from "next/server";
+let sessions: any[] = [];
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   const body = await req.json();
+
+  sessions.push(body);
 
   console.log("📡 VSCode data received:", body);
 
-  return NextResponse.json({ success: true });
+  return Response.json({ success: true });
+}
+
+export async function GET() {
+  return Response.json(sessions);
 }
