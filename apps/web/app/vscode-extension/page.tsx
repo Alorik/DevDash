@@ -12,6 +12,10 @@ export default function VsCodeE() {
   }
 
   useEffect(() => {
+    if (sessions.length > 0) console.log("Session sample:", sessions[0]);
+  }, [sessions]);
+  
+  useEffect(() => {
     fetchSessions();
     const interval = setInterval(fetchSessions, 3000);
     return () => clearInterval(interval);
@@ -27,7 +31,11 @@ export default function VsCodeE() {
             <p>Duration: {(s.duration / 1000).toFixed(1)} sec</p>
             <p>Language: {s.language}</p>
             <p>Workspace: {s.workspace}</p>
-            <p>{new Date(s.timestamp).toLocaleString()}</p>
+            <p>
+              {s.timestamp
+                ? new Date(s.timestamp).toLocaleString()
+                : "No timestamp"}
+            </p>
           </div>
         ))}
       </div>

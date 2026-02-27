@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import StreakCard from "./streakCalculator";
 import { groupIntoWeeks } from "../../app/lib/analytics/daysToWeeks";
 import { getMonthsLabels } from "../../app/lib/analytics/getMonthsLabels";
-import { fetchContributions } from "../../app/lib/github/fetchContribution";
+
 
 type Day = {
   date: string;
