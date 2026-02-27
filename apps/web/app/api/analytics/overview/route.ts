@@ -1,5 +1,3 @@
-
-
 import { flattenContributions } from "../../../lib/analytics/flattenContributions";
 import { calculateStreaks } from "../../../lib/analytics/streakCalculator";
 import { fetchContributions } from "../../../lib/github/fetchContribution";
