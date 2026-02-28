@@ -1,6 +1,16 @@
 import { timeStamp } from "console";
 import * as vscode from "vscode";
 
+type CodingSession = {
+  startTime: number;
+  endTime: number;
+  duration: number;
+  language: string;
+  project: string;
+};
+
+let sessionQueue = [];
+
 let lastActivity = Date.now();
 let sessionActive = false;
 let sessionStart: number | null = null;
@@ -62,33 +72,31 @@ async function endSession() {
     return;
   }
 
-  const duration = Date.now() - sessionStart;
+  const endTime = Date.now();
+  const duration = endTime - sessionStart;
 
+  // Detect language
   const editor = vscode.window.activeTextEditor;
-  const payload = {
+  const language = editor?.document.languageId || "unknown";
+
+  // Detect project
+  const project = vscode.workspace.workspaceFolders?.[0]?.name || "unknown";
+
+  const session: CodingSession = {
+    startTime: sessionStart,
+    endTime,
     duration,
-    timeStamp: new Date(),
-    language: editor?.document.languageId,
-    file: editor?.document.fileName,
-    workspace: vscode.workspace.workspaceFolders?.[0]?.name,
+    language,
+    project,
   };
 
-  console.log("sending", payload);
+  // ✅ ADD TO QUEUE
+  sessionQueue.push(session);
 
-  try {
-    await fetch("http://localhost:3000/api/vscode/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+  console.log("✅ Session queued");
+  console.log("Queue size:", sessionQueue.length);
 
-    console.log("📡 Session sent to DevsDash");
-  } catch {
-    console.log("❌ Failed to send session");
-  }
-
+  // reset session
   sessionActive = false;
   sessionStart = null;
 }
