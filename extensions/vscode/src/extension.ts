@@ -9,7 +9,7 @@ type CodingSession = {
   project: string;
 };
 
-let sessionQueue = [];
+let sessionQueue: CodingSession[] = [];
 
 let lastActivity = Date.now();
 let sessionActive = false;
@@ -18,9 +18,10 @@ let sessionStart: number | null = null;
 const IDLE_LIMIT = 60 * 1000; // 1 minute
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log("🚀 DevsDash Activated");
+  console.log("DevsDash Activated");
 
   startHeartbeat();
+  setInterval(syncQueue, 30000);
 
   const typing = vscode.workspace.onDidChangeTextDocument(() =>
     recordActivity("typing"),
@@ -37,7 +38,9 @@ function recordActivity(type: string) {
   const now = Date.now();
 
   const editor = vscode.window.activeTextEditor;
-  if (!editor) return;
+  if (!editor) {
+    return;
+  }
 
   const language = editor.document.languageId;
   const file = editor.document.fileName;
@@ -46,7 +49,7 @@ function recordActivity(type: string) {
   if (!sessionActive) {
     sessionActive = true;
     sessionStart = now;
-    console.log("🟢 Coding session started");
+    console.log("Coding session started");
   }
   lastActivity = now;
 
@@ -75,11 +78,9 @@ async function endSession() {
   const endTime = Date.now();
   const duration = endTime - sessionStart;
 
-  // Detect language
   const editor = vscode.window.activeTextEditor;
   const language = editor?.document.languageId || "unknown";
 
-  // Detect project
   const project = vscode.workspace.workspaceFolders?.[0]?.name || "unknown";
 
   const session: CodingSession = {
@@ -90,15 +91,40 @@ async function endSession() {
     project,
   };
 
-  // ✅ ADD TO QUEUE
   sessionQueue.push(session);
 
-  console.log("✅ Session queued");
+  console.log("Session queued");
   console.log("Queue size:", sessionQueue.length);
 
-  // reset session
   sessionActive = false;
   sessionStart = null;
 }
 
 export function deactivate() {}
+
+async function syncQueue() {
+  if (sessionQueue.length === 0) {
+    console.log("No sessions to sync");
+    return;
+  }
+
+  console.log("session starts running....");
+
+  try {
+    const res = await fetch("http://localhost:3000/api/vscode/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sessions: sessionQueue,
+      }),
+    });
+    if (!res.ok) {
+      throw new Error("Sync failed");
+    }
+    console.log(`Synced ${sessionQueue.length} sessions`);
+
+    sessionQueue = [];
+  } catch (err) {
+    console.log("ync failed. Will retry later.");
+  }
+}
