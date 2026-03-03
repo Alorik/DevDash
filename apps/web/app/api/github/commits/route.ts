@@ -1,8 +1,10 @@
-import { commitsPerDay, totalCommits } from "../../../lib/utils/dataAgregators";
-import { fetchAllCommits } from "../../../lib/utils/fetchAllCommits";
-import { fetchAllRepos } from "../../../lib/utils/fetchAllRepos";
-import { withAuth } from "../../../lib/withAuth";
-
+import {
+  commitsPerDay,
+  totalCommits,
+} from "../../../../lib/utils/dataAgregators";
+import { fetchAllCommits } from "../../../../lib/utils/fetchAllCommits";
+import { fetchAllRepos } from "../../../../lib/utils/fetchAllRepos";
+import { withAuth } from "../../../../lib/withAuth";
 
 export const GET = withAuth(async (res, session) => {
   const repos = await fetchAllRepos(session.accessToken!);

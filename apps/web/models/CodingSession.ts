@@ -8,8 +8,12 @@ const CodingSessionSchema = new mongoose.Schema({
   language: String,
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
-export default mongoose.models.CodingSession ||  mongoose.model("CodingSession", CodingSessionSchema);
+const CodingSession =
+  mongoose.models.CodingSession ??
+  mongoose.model("CodingSession", CodingSessionSchema);
+
+export default CodingSession;

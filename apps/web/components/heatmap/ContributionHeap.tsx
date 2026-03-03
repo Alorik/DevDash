@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import StreakCard from "./streakCalculator";
-import { groupIntoWeeks } from "../../app/lib/analytics/daysToWeeks";
-import { getMonthsLabels } from "../../app/lib/analytics/getMonthsLabels";
-
+import { groupIntoWeeks } from "../../lib/analytics/daysToWeeks";
+import { getMonthsLabels } from "../../lib/analytics/getMonthsLabels";
 
 type Day = {
   date: string;
@@ -25,14 +24,14 @@ export default function ContributionHeatmap() {
 
   const DAY_LABELS = ["", "Mon", "", "Wed", "", "Fri", ""];
 
-useEffect(() => {
-  fetch("/api/analytics/overview")
-    .then((res) => res.json())
-    .then((data) => {
-      setDays(data.days);
-      setTotalContributions(data.totalContributions); // add this
-    });
-}, []);
+  useEffect(() => {
+    fetch("/api/analytics/overview")
+      .then((res) => res.json())
+      .then((data) => {
+        setDays(data.days);
+        setTotalContributions(data.totalContributions); // add this
+      });
+  }, []);
 
   if (!days.length) {
     return (
