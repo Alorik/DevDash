@@ -4,6 +4,7 @@ import CodingSession from "@/models/CodingSession";
 let sessions: any[] = [];
 
 export async function POST(req: Request) {
+  console.log("Track route hit");
   await connectDb();
   const body = await req.json();
   const sessions = body.sessions;
@@ -14,5 +15,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET() {
+  await connectDb();
+  const sessions = await CodingSession.find().lean();
   return Response.json(sessions);
 }
