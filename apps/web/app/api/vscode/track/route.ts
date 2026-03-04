@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   const sessions = body.sessions;
 
   await CodingSession.insertMany(sessions);
-
+console.log("hola")
   return Response.json({ success: true });
 }
 
