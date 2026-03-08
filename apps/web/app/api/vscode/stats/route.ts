@@ -129,7 +129,7 @@ export async function GET() {
       break;
     }
   }
-
+  console.log("");
 
   return Response.json({
     todayHours,
