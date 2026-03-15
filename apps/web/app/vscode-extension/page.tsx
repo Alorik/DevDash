@@ -19,7 +19,7 @@ export default function VsCodeE() {
     fetchSessions();
     const interval = setInterval(fetchSessions, 3000);
     return () => clearInterval(interval);
-    console.log("sd");
+
   }, []);
 
   return (
