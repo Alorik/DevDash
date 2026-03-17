@@ -128,17 +128,16 @@ export async function GET() {
 
   try {
     return Response.json({
-      todayHours,
-      weekHours,
-      monthHours,
+      todayHours: Number(todayHours.toFixed(2)),
+      weekHours: Number(weekHours.toFixed(2)),
+      monthHours: Number(monthHours.toFixed(2)),
       languageDistribution,
       projectUsage,
       peakCodingHours,
       streak,
     });
-  } catch (err: unknown) {
-    if (err instanceof Error) {
-      console.error(err.message);
-    }
+  } catch (err) {
+    console.error(err);
+    return Response.json({ error: "Something went wrong" }, { status: 500 });
   }
 }

@@ -8,18 +8,17 @@ export default function VsCodeE() {
   async function fetchSessions() {
     const res = await fetch("/api/vscode/track");
     const data = await res.json();
-    setSessions(data.reverse());
+    setSessions([...data].reverse());
   }
 
   useEffect(() => {
     if (sessions.length > 0) console.log("Session sample:", sessions[0]);
   }, [sessions]);
-  
+
   useEffect(() => {
     fetchSessions();
-    const interval = setInterval(fetchSessions, 3000);
+    const interval = setInterval(fetchSessions, 10000);
     return () => clearInterval(interval);
-
   }, []);
 
   return (
@@ -29,13 +28,17 @@ export default function VsCodeE() {
       <div className="space-y-4">
         {sessions.map((s, i) => (
           <div key={i} className="border p-4 rounded-lg shadow">
-            <p>Duration: {(s.duration / 1000).toFixed(1)} sec</p>
-            <p>Language: {s.language}</p>
-            <p>Workspace: {s.workspace}</p>
-            <p>
-              {s.timestamp
-                ? new Date(s.timestamp).toLocaleString()
-                : "No timestamp"}
+            <p className="font-medium">
+              Duration: {(s.duration / 60000).toFixed(1)} min
+            </p>
+            <p className="text-sm text-gray-400 capitalize">
+              language: {s.language}
+            </p>
+            <p className="text-sm text-gray-500">
+              Workspace: {s.workspace || "Unknown workspace"}
+            </p>
+            <p className="text-xs text-gray-600">
+              time: {new Date(s.startTime).toLocaleString()}
             </p>
           </div>
         ))}
