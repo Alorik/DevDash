@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 export async function POST(req: NextRequest) {
   try {
     await connectDb();
+    console.log("MongoDB connected");
     const { name, email, password } = await req.json();
 
     if (!name || !email || !password) {
