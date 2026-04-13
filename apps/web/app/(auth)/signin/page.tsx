@@ -14,7 +14,6 @@ export default function SignIn() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setLoading(true);
     setError("");
 
@@ -31,7 +30,6 @@ export default function SignIn() {
       return;
     }
 
-    // success
     router.push("/dashboard");
   };
 
@@ -69,6 +67,22 @@ export default function SignIn() {
           className="w-full bg-black text-white py-2 rounded-md hover:opacity-90 disabled:opacity-50"
         >
           {loading ? "Signing in..." : "Sign In"}
+        </button>
+
+        {/* Divider */}
+        <div className="flex items-center gap-2">
+          <div className="h-px bg-gray-300 flex-1" />
+          <span className="text-xs text-gray-400">OR</span>
+          <div className="h-px bg-gray-300 flex-1" />
+        </div>
+
+        {/* GitHub Login */}
+        <button
+          type="button"
+          onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
+          className="w-full border border-gray-300 py-2 text-gray-900 rounded-md hover:bg-gray-100"
+        >
+          Continue with GitHub
         </button>
       </form>
     </div>
