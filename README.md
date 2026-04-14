@@ -9,5 +9,6 @@ But we can click on it to have a larger picture of it in detail. the it will be
 in this goals and reminders both comes.
 /dashboard/projects
 /dashboard/settings
+rgv
 
 add compare growth 
