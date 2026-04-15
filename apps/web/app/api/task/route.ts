@@ -27,5 +27,16 @@ export async function POST(req: NextRequest) {
   }
 }
 
+export async function GET(req: NextRequest) {
+  try {
+    await connectDb();
+    const { searchParams } = new URL(req.url);
+    const userId = searchParams.get("userId");
 
-
+    const tasks = await Task.find({ userId });
+    return NextResponse.json(tasks);
+  } catch (err) {
+    console.log(err);
+    return NextResponse.json({ error: "No tasks found" }, { status: 500 });
+  }
+}
