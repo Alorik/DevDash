@@ -40,3 +40,4 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "No tasks found" }, { status: 500 });
   }
 }
+
