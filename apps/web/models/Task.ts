@@ -19,7 +19,16 @@ const TaskSchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    deleted: {
+      type: Boolean,
+      default: false,
+    },
+    deletedAt: {
+      type: Date,
+      default: null,
+    },
   },
+
   {
     timestamps: true,
   },

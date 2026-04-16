@@ -33,11 +33,14 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const userId = searchParams.get("userId");
 
-    const tasks = await Task.find({ userId });
+    const tasks = await Task.find({
+      userId,
+      $or: [{ deleted: false }, { deleted: { $exists: false } }],
+    });
+
     return NextResponse.json(tasks);
   } catch (err) {
     console.log(err);
     return NextResponse.json({ error: "No tasks found" }, { status: 500 });
   }
 }
-

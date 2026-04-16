@@ -50,7 +50,11 @@ export async function DELETE(
       return NextResponse.json({ error: "Invalid TaskId" }, { status: 400 });
     }
 
-    const deleteTask = await Task.findByIdAndDelete(taskId);
+    const deleteTask = await Task.findByIdAndDelete(taskId, {
+      deleted: true,
+      deletedAt: new Date(),
+      returnDocument: "after",
+    });
 
     if (!deleteTask) {
       return NextResponse.json({ error: "Task is not found" }, { status: 404 });
