@@ -5,7 +5,7 @@ const EntrySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Project",
     },
-    
+
     text: {
       type: String,
       required: true,
@@ -23,3 +23,9 @@ const EntrySchema = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
+const Entry =
+  mongoose.models.Entry ?? mongoose.model("Entry", EntrySchema);
+
+export default Entry;
+
