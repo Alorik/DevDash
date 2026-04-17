@@ -18,8 +18,8 @@ export async function POST(
     }
 
     const body = await req.json();
-    const { text, date } = body;
-    if (!text || !date) {
+    const { text } = body;
+    if (!text) {
       return NextResponse.json(
         { error: "Text and date are required" },
         { status: 400 },
@@ -29,7 +29,6 @@ export async function POST(
     const entry = await Entry.create({
       projectId,
       text,
-      date: new Date(date),
     });
 
     return NextResponse.json(entry, { status: 201 });
