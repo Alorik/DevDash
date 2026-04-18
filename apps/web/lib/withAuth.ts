@@ -7,7 +7,7 @@ export function withAuth(
   return async (req: Request) => {
     const session = await getServerSession(authOptions);
 
-    if (!session?.accessToken) {
+    if (!session || !session.user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 

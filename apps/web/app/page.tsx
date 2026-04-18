@@ -1,29 +1,13 @@
-"use client";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
+export default async function Home() {
+  const session = await getServerSession(authOptions);
 
-import { signIn, signOut, useSession } from "next-auth/react";
+  if (!session) {
+    redirect("/signup"); // ❌ not logged in
+  }
 
-export default function Home() {
-  const { data: session, status } = useSession();
-
-  if (status === "loading") return <p>Loading...</p>;
-  setTimeout(() => {
-    console.log("SESSION:", session);
-  }, 2000);
-
-  return (
-    <div>
-      {!session ? (
-        <button onClick={() => signIn("github")}>Login with GitHub</button>
-      ) : (
-        <>
-          <p>Welcome {session.user?.name}</p>
-          <button onClick={() => signOut()}>Logout</button>
-        </>
-      )}
-
-      <div>
-      </div>
-    </div>
-  );
+  redirect("/dashboard"); // ✅ logged in
 }
