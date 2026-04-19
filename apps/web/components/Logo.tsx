@@ -20,10 +20,10 @@ export default function Logo() {
       <span className="font-mono text-3xl font-normal text-[#e6edf3] tracking-[-1px]">
         Dev
       </span>
-      <span className="font-mono text-3xl font-bold text-emerald-400 tracking-[-1px]">
+      <span className="font-mono text-3xl font-bold text-lime-400 tracking-[-1px]">
         Dash
       </span>
-      <span className="inline-block w-[2px] h-[22px] bg-emerald-400 ml-1.5 rounded-sm align-middle animate-[blink_1.1s_step-end_infinite]" />
+      <span className="inline-block w-[2px] h-[22px] bg-lime-400 ml-1.5 rounded-sm align-middle animate-[blink_1.1s_step-end_infinite]" />
     </div>
   );
 }
