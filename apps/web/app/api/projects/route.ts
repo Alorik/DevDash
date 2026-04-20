@@ -1,13 +1,14 @@
 import { authOptions } from "@/lib/auth";
 import { connectDb } from "@/lib/db/mongodb";
 import Project from "@/models/Project";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
     await connectDb();
-       const session = await getServerSession(authOptions);
+    const session = await getServerSession(authOptions);
+    console.log("SESSION DEBUG:", JSON.stringify(session, null, 2));
 
        if (!session?.user?.id) {
          return NextResponse.json(
@@ -17,9 +18,9 @@ export async function POST(req: NextRequest) {
          );
        }
     const body = await req.json();
-    const { title, description, userId } = body;
+    const { title, description } = body;
 
-    if (!title || !userId) {
+    if (!title) {
       return NextResponse.json(
         { error: "Title and userId required" },
         { status: 400 },

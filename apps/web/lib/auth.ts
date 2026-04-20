@@ -13,16 +13,14 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
-        token.id = account.providerAccountId;
         token.accessToken = account.access_token;
       }
-
       return token;
     },
 
     async session({ session, token }) {
       if (session.user) {
-        session.user.id = token.id as string;
+        session.user.id = token.sub as string; 
       }
 
       session.accessToken = token.accessToken;
