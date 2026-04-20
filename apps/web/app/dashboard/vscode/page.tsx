@@ -19,13 +19,13 @@ type Session = {
 };
 
 const glassStyle: React.CSSProperties = {
-  background: "rgba(255, 255, 255, 0.22)",
-  backdropFilter: "blur(24px) saturate(180%)",
-  WebkitBackdropFilter: "blur(24px) saturate(180%)",
+  background: "rgba(255, 255, 255, 0.18)",
+  backdropFilter: "blur(32px) saturate(200%)",
+  WebkitBackdropFilter: "blur(32px) saturate(200%)",
   boxShadow:
-    "0 8px 32px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -1px 1px rgba(0,0,0,0.04)",
+    "0 8px 40px rgba(0,0,0,0.1), inset 0 1.5px 1px rgba(255,255,255,0.65), inset 0 -1px 1px rgba(0,0,0,0.05)",
+  border: "1px solid rgba(255,255,255,0.45)",
 };
-
 
 function GlassCard({
   children,
@@ -38,26 +38,29 @@ function GlassCard({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16, scale: 0.95 }}
+      initial={{ opacity: 0, y: 18, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.5, delay, ease: [0.34, 1.56, 0.64, 1] }}
-      className={`relative overflow-hidden rounded-[1.5rem] border border-white/40 ${className}`}
+      transition={{ duration: 0.55, delay, ease: [0.34, 1.56, 0.64, 1] }}
+      className={`relative overflow-hidden rounded-[1.75rem] ${className}`}
       style={glassStyle}
     >
-
-      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
+      {/* Top specular highlight */}
+      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+      {/* Bottom shadow line */}
+      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/8 to-transparent pointer-events-none z-10" />
+      {/* Light sweep */}
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
         transition={{
-          duration: 4,
+          duration: 5,
           repeat: Infinity,
           ease: "linear",
-          repeatDelay: 2 + delay * 5,
+          repeatDelay: 3 + delay * 4,
         }}
         className="absolute inset-0 pointer-events-none -skew-x-12 z-10"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent)",
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
         }}
       />
       <div className="p-5 relative z-20">{children}</div>
@@ -65,11 +68,11 @@ function GlassCard({
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function Label({ children }: { children: React.ReactNode }) {
   return (
     <p
-      className="text-[11px] font-mono uppercase tracking-widest mb-4 font-semibold"
-      style={{ color: "rgba(30,20,20,0.4)" }}
+      className="text-[10px] font-mono uppercase tracking-[0.16em] mb-1.5 font-semibold"
+      style={{ color: "rgba(30,20,20,0.38)" }}
     >
       {children}
     </p>
@@ -95,17 +98,24 @@ export default function DashboardPage() {
   const statCards = [
     {
       label: "Today",
-      value: stats ? `${stats.todayHours.toFixed(2)} hrs` : "—",
+      value: stats ? `${stats.todayHours.toFixed(2)}` : "—",
+      unit: "hrs",
     },
     {
       label: "This Week",
-      value: stats ? `${stats.weekHours.toFixed(2)} hrs` : "—",
+      value: stats ? `${stats.weekHours.toFixed(2)}` : "—",
+      unit: "hrs",
     },
     {
       label: "This Month",
-      value: stats ? `${stats.monthHours.toFixed(2)} hrs` : "—",
+      value: stats ? `${stats.monthHours.toFixed(2)}` : "—",
+      unit: "hrs",
     },
-    { label: "Streak ", value: stats ? `${stats.streak} days` : "—" },
+    {
+      label: "Streak",
+      value: stats ? `${stats.streak}` : "—",
+      unit: "days ",
+    },
   ];
 
   const projectEntries = stats?.projectUsage
@@ -113,76 +123,76 @@ export default function DashboardPage() {
     : [];
 
   const maxHours = projectEntries[0]?.[1] ?? 1;
-
   const sortedSessions = [...sessions].sort(
     (a, b) => b.startTime - a.startTime,
   );
 
   return (
-    <div className="p-8 space-y-6 min-h-screen">
+    <div className="p-8 space-y-5 min-h-screen">
       {/* ── Stat Cards ── */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {statCards.map((card, i) => (
-          <GlassCard
-            key={card.label}
-            delay={i * 0.08}
-          >
-            <p
-              className="text-[11px] font-mono uppercase tracking-widest mb-2 font-semibold"
-              style={{ color: "rgba(30,20,20,0.4)" }}
-            >
-              {card.label}
-            </p>
-            <p
-              className="text-2xl font-black tracking-tight"
-              style={{ color: "rgba(30,20,20,0.82)" }}
-            >
-              {card.value}
-            </p>
+          <GlassCard key={card.label} delay={i * 0.07}>
+            <Label>{card.label}</Label>
+            <div className="flex items-end gap-1.5 leading-none mt-2">
+              <span
+                className="text-[2rem] font-black tracking-tighter leading-none"
+                style={{ color: "rgba(249,115,22,0.85)" }}
+              >
+                {card.value}
+              </span>
+              {card.value !== "—" && (
+                <span
+                  className="text-[12px] font-mono font-semibold mb-1"
+                  style={{ color: "rgba(30,20,20,0.38)" }}
+                >
+                  {card.unit}
+                </span>
+              )}
+            </div>
           </GlassCard>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* ── Project Usage ── */}
-        <GlassCard
-          delay={0.35}
-        >
-          <SectionLabel>Project Usage</SectionLabel>
+        <GlassCard delay={0.3}>
+          <Label>Project Usage</Label>
           {projectEntries.length === 0 ? (
             <p
-              className="text-sm font-mono animate-pulse"
-              style={{ color: "rgba(30,20,20,0.3)" }}
+              className="text-sm font-mono mt-3 animate-pulse"
+              style={{ color: "rgba(30,20,20,0.28)" }}
             >
               No data yet...
             </p>
           ) : (
-            <div className="space-y-3">
+            <div className="space-y-3.5 mt-3">
               {projectEntries.map(([project, hours], i) => {
                 const pct = (hours / maxHours) * 100;
                 return (
                   <motion.div
                     key={project}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 + i * 0.06, duration: 0.4 }}
+                    transition={{ delay: 0.35 + i * 0.055, duration: 0.4 }}
                   >
-                    <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center justify-between mb-1.5">
                       <span
-                        className="text-[12px] font-mono font-semibold truncate max-w-[60%]"
-                        style={{ color: "rgba(30,20,20,0.72)" }}
+                        className="text-[12px] font-mono font-semibold truncate max-w-[65%]"
+                        style={{ color: "rgba(30,20,20,0.7)" }}
                       >
                         {project}
                       </span>
                       <span
-                        className="text-[11px] font-mono"
-                        style={{ color: "rgba(30,20,20,0.45)" }}
+                        className="text-[11px] font-mono font-bold"
+                        style={{ color: "rgba(249,115,22,0.85)" }}
                       >
-                        {hours.toFixed(2)} hrs
+                        {hours.toFixed(2)}h
                       </span>
                     </div>
+                    {/* Bar track */}
                     <div
-                      className="w-full h-2 rounded-full overflow-hidden"
+                      className="w-full h-[6px] rounded-full overflow-hidden"
                       style={{ background: "rgba(0,0,0,0.07)" }}
                     >
                       <motion.div
@@ -190,13 +200,13 @@ export default function DashboardPage() {
                         initial={{ width: 0 }}
                         animate={{ width: `${pct}%` }}
                         transition={{
-                          delay: 0.45 + i * 0.06,
-                          duration: 0.6,
+                          delay: 0.4 + i * 0.055,
+                          duration: 0.65,
                           ease: "easeOut",
                         }}
                         style={{
-                          background: `linear-gradient(to right, `,
-                          boxShadow: `0 0 8px `,
+                          background: "rgba(249,115,22,0.55)",
+                          boxShadow: "0 0 6px rgba(249,115,22,0.3)",
                         }}
                       />
                     </div>
@@ -208,19 +218,17 @@ export default function DashboardPage() {
         </GlassCard>
 
         {/* ── Recent Sessions ── */}
-        <GlassCard
-          delay={0.4}
-        >
-          <SectionLabel>Recent Sessions</SectionLabel>
+        <GlassCard delay={0.36}>
+          <Label>Recent Sessions</Label>
           {sortedSessions.length === 0 ? (
             <p
-              className="text-sm font-mono animate-pulse"
-              style={{ color: "rgba(30,20,20,0.3)" }}
+              className="text-sm font-mono mt-3 animate-pulse"
+              style={{ color: "rgba(30,20,20,0.28)" }}
             >
               No sessions yet...
             </p>
           ) : (
-            <div className="space-y-2 max-h-64 overflow-y-auto pr-1">
+            <div className="space-y-0 mt-2 max-h-[260px] overflow-y-auto pr-0.5">
               {sortedSessions.slice(0, 20).map((s, i) => {
                 const mins = Math.round(s.duration / (1000 * 60));
                 const date = new Date(s.startTime).toLocaleDateString("en-US", {
@@ -235,30 +243,32 @@ export default function DashboardPage() {
                 return (
                   <motion.div
                     key={s._id}
-                    initial={{ opacity: 0, x: 10 }}
+                    initial={{ opacity: 0, x: 8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.42 + i * 0.04, duration: 0.35 }}
-                    className="flex items-center justify-between py-2 border-b border-black/[0.05] last:border-0"
+                    transition={{ delay: 0.38 + i * 0.035, duration: 0.32 }}
+                    className="flex items-center justify-between py-2.5"
+                    style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}
                   >
                     <div className="flex flex-col gap-0.5 min-w-0">
                       <span
-                        className="text-[12px] font-mono font-semibold truncate"
+                        className="text-[12px] font-mono font-bold truncate"
                         style={{ color: "rgba(30,20,20,0.75)" }}
                       >
                         {s.project || "unknown"}
                       </span>
                       <span
                         className="text-[10px] font-mono"
-                        style={{ color: "rgba(30,20,20,0.38)" }}
+                        style={{ color: "rgba(30,20,20,0.36)" }}
                       >
-                        {s.language || "—"} · {date} {time}
+                        {s.language || "—"} · {date} · {time}
                       </span>
                     </div>
                     <span
-                      className="text-[11px] font-mono font-bold ml-3 flex-shrink-0 px-2 py-0.5 rounded-full"
+                      className="text-[11px] font-mono font-black ml-3 flex-shrink-0 px-2.5 py-0.5 rounded-full"
                       style={{
-                        background: "rgba(249,115,22,0.12)",
-                        color: "rgba(180,70,0,0.85)",
+                        background: "rgba(249,115,22,0.1)",
+                        color: "rgba(249,115,22,0.85)",
+                        border: "1px solid rgba(249,115,22,0.2)",
                       }}
                     >
                       {mins}m
