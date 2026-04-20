@@ -2,22 +2,10 @@
 import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 
-function getGreeting() {
-  const hour = new Date().getHours();
-  if (hour < 12) return "Good morning";
-  if (hour < 17) return "Good afternoon";
-  return "Good evening";
-}
 
-function getDate() {
-  return new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  });
-}
 
-function initials(name) {
+
+function initials(name: string): string {
   return name
     .split(" ")
     .map((n) => n[0])
@@ -29,28 +17,34 @@ function initials(name) {
 export default function UserCard() {
   const { data: session, status } = useSession();
 
-  // Glass base styles
-  const glassBase = `
+  const glassCard = `
     relative overflow-hidden
-    bg-white/[0.03] backdrop-blur-[40px] saturate-[180%]
-    border border-white/[0.12] 
-    shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5),inset_0_1px_1px_0_rgba(255,255,255,0.1)]
+    rounded-[2rem]
+    border border-white/40
   `;
+
+  const glassStyle = {
+    background: "rgba(255, 255, 255, 0.22)",
+    backdropFilter: "blur(24px) saturate(180%)",
+    WebkitBackdropFilter: "blur(24px) saturate(180%)",
+    boxShadow:
+      "0 8px 32px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -1px 1px rgba(0,0,0,0.04)",
+  };
 
   if (status === "loading") {
     return (
-      <div className={`w-72 rounded-[2.5rem] p-8 animate-pulse ${glassBase}`}>
-        <div className="w-24 h-24 rounded-full mx-auto mb-6 bg-white/10" />
-        <div className="h-4 rounded-full w-1/2 mx-auto mb-3 bg-white/10" />
-        <div className="h-3 rounded-full w-2/3 mx-auto bg-white/5" />
+      <div className={`w-72 p-8 animate-pulse ${glassCard}`} style={glassStyle}>
+        <div className="w-20 h-20 rounded-full mx-auto mb-6 bg-white/40" />
+        <div className="h-4 rounded-full w-1/2 mx-auto mb-3 bg-white/30" />
+        <div className="h-3 rounded-full w-2/3 mx-auto bg-white/20" />
       </div>
     );
   }
 
   if (!session?.user) {
     return (
-      <div className={`w-72 rounded-[2.5rem] p-8 ${glassBase}`}>
-        <p className="text-[11px] text-rose-400 font-mono tracking-tighter uppercase font-black">
+      <div className={`w-72 p-8 ${glassCard}`} style={glassStyle}>
+        <p className="text-[11px] text-rose-500 font-mono tracking-tighter uppercase font-black">
           // Session Terminated
         </p>
       </div>
@@ -61,70 +55,109 @@ export default function UserCard() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className={`w-72 rounded-[2.5rem] ${glassBase}`}
+      initial={{ opacity: 0, scale: 0.92, y: 12 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+      className={`w-72 ${glassCard}`}
+      style={glassStyle}
     >
-      {/* Refractive Light Sweep */}
+      {/* Top specular edge */}
+      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
+
+      {/* Bottom subtle shadow line */}
+      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
+
+      {/* Refractive light sweep */}
       <motion.div
-        animate={{ x: ["-100%", "200%"] }}
+        animate={{ x: ["-200%", "350%"] }}
         transition={{
-          duration: 3,
+          duration: 4,
           repeat: Infinity,
           ease: "linear",
-          repeatDelay: 1,
+          repeatDelay: 3,
         }}
-        className="absolute inset-0 pointer-events-none bg-gradient-to-r from-transparent via-white/[0.05] to-transparent -skew-x-12"
+        className="absolute inset-0 pointer-events-none -skew-x-12 z-10"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)",
+        }}
       />
 
-      <div className="p-8 flex flex-col items-center text-center relative z-10">
-        {/* Avatar with Floating Ring */}
-        <div className="relative mb-6">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500/20 to-rose-500/20 blur-xl animate-pulse" />
+      <div className="p-7 flex items-center gap-5 relative z-20">
+        {/* Avatar */}
+        <div className="relative flex-shrink-0">
+          {/* Rotating conic ring — warm rose / amber / coral */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-[-3px] rounded-full z-0"
+            style={{
+              background:
+                "conic-gradient(from 0deg, rgba(251,113,133,0.9), rgba(251,191,36,0.8), rgba(249,115,22,0.7), rgba(244,63,94,0.85), rgba(251,113,133,0.9))",
+            }}
+          />
+
+          {/* Soft glow behind ring */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-[-6px] rounded-full z-0 opacity-40"
+            style={{
+              background:
+                "conic-gradient(from 0deg, rgba(251,113,133,0.5), rgba(251,191,36,0.4), rgba(249,115,22,0.4), rgba(251,113,133,0.5))",
+              filter: "blur(6px)",
+            }}
+          />
+
+          {/* Avatar image or initials */}
           {image ? (
             <img
               src={image}
               alt={name ?? "user"}
-              className="w-24 h-24 rounded-full object-cover relative z-10 p-1 bg-white/[0.08] border border-white/20 shadow-2xl"
+              className="w-[72px] h-[72px] rounded-full object-cover relative z-10 border-2 border-white/50 shadow-lg"
             />
           ) : (
-            <div className="w-24 h-24 rounded-full flex items-center justify-center font-black text-2xl text-white relative z-10 bg-white/[0.08] border border-white/20 shadow-2xl">
+            <div
+              className="w-[72px] h-[72px] rounded-full flex items-center justify-center font-black text-lg relative z-10 border-2 border-white/50 shadow-lg"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(251,113,133,0.25), rgba(251,191,36,0.15))",
+                backdropFilter: "blur(10px)",
+                color: "rgba(80,35,35,0.85)",
+                boxShadow:
+                  "inset 0 1px 1px rgba(255,255,255,0.5), 0 4px 12px rgba(0,0,0,0.1)",
+              }}
+            >
               {name ? initials(name) : "?"}
             </div>
           )}
 
-          {/* Status Glow */}
-          <span className="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 border-4 border-[#1e1e20] shadow-[0_0_12px_rgba(52,211,153,0.8)] z-20" />
+          {/* Status dot */}
+          <span
+            className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full z-20"
+            style={{
+              background: "#4ade80",
+              border: "2px solid rgba(255,255,255,0.9)",
+              boxShadow: "0 0 6px rgba(74,222,128,0.6)",
+            }}
+          />
+          {/* Pulse halo */}
+          <motion.span
+            animate={{ scale: [1, 1.7, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full z-10"
+            style={{ background: "rgba(74,222,128,0.35)" }}
+          />
         </div>
 
-        {/* Identity Section */}
-        <div className="space-y-1 mb-6">
-          <h2 className="text-2xl font-black text-white tracking-tighter leading-none">
+        {/* Text */}
+        <div className="flex flex-col gap-[3px]">
+          <h2
+            className="text-[1.1rem] font-black tracking-tight"
+            style={{ color: "rgba(30,20,20,0.85)" }}
+          >
             {name ?? "Anonymous"}
           </h2>
-          <div className="flex flex-col gap-1 pt-2">
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30">
-              {getGreeting()}
-            </span>
-            <span className="font-mono text-[10px] text-white/50 font-bold">
-              {getDate()}
-            </span>
-          </div>
-        </div>
-
-        {/* Dynamic Glass Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
-
-        {/* System Badge */}
-        <div className="group flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/[0.05] border border-white/[0.08] transition-all hover:bg-white/[0.1] hover:border-white/20">
-          <motion.span
-            animate={{ opacity: [1, 0.4, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,1)]"
-          />
-          <span className="font-mono text-[9px] font-black uppercase tracking-[0.2em] text-white/60">
-            Secure Session
-          </span>
         </div>
       </div>
     </motion.div>
