@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import ContributionHeatmap from "../../components/heatmap/ContributionHeap";
 import UserCard from "@/components/UseCard";
 import TimeCard from "@/components/TimeCard";
+import VSCodePage from "@/components/VScodepage";
 
 export default function DashboardPage() {
   return (
@@ -22,8 +23,10 @@ export default function DashboardPage() {
         <UserCard />
         <TimeCard />
       </div>
-
-      <ContributionHeatmap />
+      <div className="flex ">
+        <ContributionHeatmap />
+        <VSCodePage />
+      </div>
     </main>
   );
 }
