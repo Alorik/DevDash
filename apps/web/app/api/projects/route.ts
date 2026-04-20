@@ -1,10 +1,21 @@
+import { authOptions } from "@/lib/auth";
 import { connectDb } from "@/lib/db/mongodb";
 import Project from "@/models/Project";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
     await connectDb();
+       const session = await getServerSession(authOptions);
+
+       if (!session?.user?.id) {
+         return NextResponse.json(
+           { error: "Unauthorized" },
+
+           { status: 401 },
+         );
+       }
     const body = await req.json();
     const { title, description, userId } = body;
 
@@ -18,7 +29,7 @@ export async function POST(req: NextRequest) {
     const project = await Project.create({
       title,
       description,
-      userId,
+      userId: session.user.id,
     });
 
     return NextResponse.json(project, { status: 201 });
