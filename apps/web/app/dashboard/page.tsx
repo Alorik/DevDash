@@ -3,6 +3,7 @@ import ContributionHeatmap from "../../components/heatmap/ContributionHeap";
 import UserCard from "@/components/UseCard";
 import TimeCard from "@/components/TimeCard";
 import VSCodePage from "@/components/VScodepage";
+import SpotifyCard from "@/components/Spotify";
 
 export default function DashboardPage() {
   return (
@@ -22,6 +23,7 @@ export default function DashboardPage() {
       <div className="flex gap-12 mb-12">
         <UserCard />
         <TimeCard />
+        <SpotifyCard />
       </div>
       <div className="flex ">
         <ContributionHeatmap />

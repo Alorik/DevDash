@@ -62,5 +62,6 @@ export async function getLastPlayedSong() {
     image: track.album.images[0]?.url,
     url: track.external_urls.spotify,
     playedAt: data.items[0].played_at,
+    uri: track.uri,
   };
 }
