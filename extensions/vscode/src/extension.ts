@@ -1,4 +1,5 @@
 import { timeStamp } from "console";
+import fetch from "node-fetch";
 import * as vscode from "vscode";
 
 type CodingSession = {

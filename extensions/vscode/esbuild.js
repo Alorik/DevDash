@@ -25,23 +25,22 @@ const esbuildProblemMatcherPlugin = {
 
 async function main() {
 	const ctx = await esbuild.context({
-		entryPoints: [
-			'src/extension.ts'
-		],
-		bundle: true,
-		format: 'cjs',
-		minify: production,
-		sourcemap: !production,
-		sourcesContent: false,
-		platform: 'node',
-		outfile: 'dist/extension.js',
-		external: ['vscode'],
-		logLevel: 'silent',
-		plugins: [
-			/* add to the end of plugins array */
-			esbuildProblemMatcherPlugin,
-		],
-	});
+    entryPoints: ["src/extension.ts"],
+    bundle: true,
+    target: ["node16"],
+    format: "cjs",
+    minify: false,
+    sourcemap: !production,
+    sourcesContent: false,
+    platform: "node",
+    outfile: "dist/extension.js",
+    external: ["vscode"],
+    logLevel: "silent",
+    plugins: [
+      /* add to the end of plugins array */
+      esbuildProblemMatcherPlugin,
+    ],
+  });
 	if (watch) {
 		await ctx.watch();
 	} else {
