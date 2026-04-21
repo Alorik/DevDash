@@ -22,26 +22,6 @@ const glassStyle: React.CSSProperties = {
   border: "1px solid rgba(255,255,255,0.45)",
 };
 
-function PulsingBars() {
-  return (
-    <div className="flex items-end gap-[3px] h-3.5">
-      {[0, 0.2, 0.1, 0.3, 0.15].map((delay, i) => (
-        <motion.div
-          key={i}
-          className="w-[3px] rounded-full"
-          style={{ background: "rgba(249,115,22,0.75)" }}
-          animate={{ scaleY: [0.3, 1, 0.3] }}
-          transition={{
-            duration: 0.7,
-            repeat: Infinity,
-            delay,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 type PlayState = "idle" | "loading" | "playing" | "error" | "no_device";
 
