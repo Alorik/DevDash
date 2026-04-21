@@ -17,10 +17,17 @@ export async function getAccessToken() {
       grant_type: "refresh_token",
       refresh_token: process.env.SPOTIFY_REFRESH_TOKEN!,
     }),
-    cache: "no-store",
   });
 
-  return res.json();
+  const data = await res.json();
+
+  console.log("TOKEN RESPONSE:", data); // 👈 ADD THIS
+
+  if (!res.ok) {
+    throw new Error("Failed to refresh token");
+  }
+
+  return data;
 }
 
 export async function getLastPlayedSong() {
@@ -33,15 +40,20 @@ export async function getLastPlayedSong() {
     cache: "no-store",
   });
 
+  const text = await res.text(); // 👈 IMPORTANT
+  console.log("SPOTIFY RESPONSE:", res.status, text);
+
   if (!res.ok) {
-    throw new Error("Failed to fetch Spotify data");
+    throw new Error(`Spotify API Error: ${res.status}`);
   }
 
-  const data = await res.json();
+  const data = JSON.parse(text);
 
-  const track = data.items?.[0]?.track;
+  if (!data.items || data.items.length === 0) {
+    return null; // 👈 handle empty safely
+  }
 
-  if (!track) return null;
+  const track = data.items[0].track;
 
   return {
     song: track.name,
