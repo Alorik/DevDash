@@ -94,7 +94,7 @@ export default function TimeCard() {
         </div>
 
         {/* Time */}
-        <div className="flex items-baseline gap-2 leading-none" >
+        <div className="flex items-baseline gap-2 leading-none mb-4">
           <motion.span
             key={timePart}
             initial={{ opacity: 0.6, y: 2 }}

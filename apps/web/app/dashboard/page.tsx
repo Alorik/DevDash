@@ -27,7 +27,7 @@ export default function DashboardPage() {
       </div>
       <div className="flex ">
         <ContributionHeatmap />
-        <VSCodePage />
+        {/* <VSCodePage /> */}
       </div>
     </main>
   );

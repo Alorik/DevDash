@@ -9,8 +9,7 @@ export default async function TasksPage() {
   if (!session) {
     redirect("/signup");
   }
-
-  const userId = session.user.id; // 👈 VERY IMPORTANT
+  const userId = session.user.id; 
 
   const res = await fetch(`http://localhost:3000/api/tasks?userId=${userId}`, {
     cache: "no-store",
@@ -23,12 +22,12 @@ export default async function TasksPage() {
 
   const data = await res.json();
 
-  console.log("TASK API RESPONSE:", data); // 👈 DEBUG
+  console.log("TASK API RESPONSE:", data); 
 
-  const tasks = Array.isArray(data) ? data : []; // 👈 SAFETY
+  const tasks = Array.isArray(data) ? data : []; 
 
   return (
-    <div className="p-6">
+    <div className="p-6 min-h-screen">
       <h1 className="text-2xl font-bold mb-6">Tasks</h1>
       <TasksList tasks={tasks} />
     </div>

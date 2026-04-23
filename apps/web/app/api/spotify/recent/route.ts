@@ -1,12 +1,10 @@
-import { NextResponse, NextRequest } from "next/server";
-
-import { getAccessToken } from "@/lib/spotify";
+import { NextResponse } from "next/server";
 import { getLastPlayedSong } from "@/lib/spotify";
 
 export async function GET() {
   try {
+    
     const song = await getLastPlayedSong();
-
     if (!song) {
       return NextResponse.json({
         message: "No recent song found",

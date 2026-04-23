@@ -10,7 +10,7 @@ interface Song {
   image: string;
   url: string;
   playedAt: string;
-  uri?: string; // spotify:track:xxxx  — add this to your API response
+  uri?: string; 
 }
 
 const glassStyle: React.CSSProperties = {
@@ -136,8 +136,8 @@ function Card() {
       className="relative overflow-hidden rounded-[1.75rem] w-full max-w-sm"
       style={glassStyle}
     >
-      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/[0.06] to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-black/0.6 to-transparent pointer-events-none z-10" />
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
         transition={{
@@ -183,7 +183,7 @@ function Card() {
             className="text-sm font-mono"
             style={{ color: "rgba(30,20,20,0.35)" }}
           >
-            No recent song found 🎧
+            No recent song found
           </p>
         )}
 
@@ -199,7 +199,7 @@ function Card() {
               className="flex items-center gap-4 group"
             >
               {/* Album art */}
-              <div className="relative flex-shrink-0">
+              <div className="relative shrink-0">
                 <img
                   src={data.image}
                   alt={data.song}
@@ -212,7 +212,6 @@ function Card() {
                 />
               </div>
 
-              {/* Track info */}
               <div className="flex flex-col gap-0.5 min-w-0 flex-1">
                 <span
                   className="text-[14px] font-black tracking-tight truncate group-hover:underline underline-offset-2"
@@ -246,14 +245,13 @@ function Card() {
               </div>
 
               <span
-                className="text-[18px] flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                className="text-[18px] shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                 style={{ color: "rgba(249,115,22,0.7)" }}
               >
                 ↗
               </span>
             </motion.a>
 
-            {/* Play again button — only if uri exists */}
             {data.uri && <PlayButton uri={data.uri} />}
           </>
         )}
