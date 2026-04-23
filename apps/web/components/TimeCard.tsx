@@ -76,9 +76,25 @@ export default function TimeCard() {
         }}
       />
 
-      <div className="p-5 relative z-20">
+      <div className="px-5 pt-5 relative z-20 ">
+        {/* Greeting */}
+        <div className="flex flex-col gap-0.5 mb-4">
+          <p
+            className="font-mono text-[11px] font-medium"
+            style={{ color: "rgba(30,20,20,0.5)" }}
+          >
+            {getGreeting()}
+          </p>
+          <p
+            className="font-mono text-[11px] font-medium"
+            style={{ color: "rgba(30,20,20,0.35)" }}
+          >
+            {getDate()}
+          </p>
+        </div>
+
         {/* Time */}
-        <div className="flex items-end gap-2 leading-none mb-1">
+        <div className="flex items-baseline gap-2 leading-none" >
           <motion.span
             key={timePart}
             initial={{ opacity: 0.6, y: 2 }}
@@ -90,20 +106,12 @@ export default function TimeCard() {
             {timePart}
           </motion.span>
           <span
-            className="font-mono text-[18px] font-semibold mb-2 tracking-widest uppercase"
+            className="font-mono text-[18px] font-semibold tracking-widest uppercase"
             style={{ color: "rgba(249,115,22,0.85)" }}
           >
             {meridiem}
           </span>
         </div>
-
-        {/* Date */}
-        <p
-          className="font-mono text-[11px] mt-2 font-medium"
-          style={{ color: "rgba(30,20,20,0.5)" }}
-        >
-          {getDate()}
-        </p>
       </div>
     </motion.div>
   );

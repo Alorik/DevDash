@@ -2,9 +2,6 @@
 import { useSession } from "next-auth/react";
 import { motion } from "framer-motion";
 
-
-
-
 function initials(name: string): string {
   return name
     .split(" ")
@@ -33,17 +30,21 @@ export default function UserCard() {
 
   if (status === "loading") {
     return (
-      <div className={`w-72 p-8 animate-pulse ${glassCard}`} style={glassStyle}>
-        <div className="w-20 h-20 rounded-full mx-auto mb-6 bg-white/40" />
-        <div className="h-4 rounded-full w-1/2 mx-auto mb-3 bg-white/30" />
-        <div className="h-3 rounded-full w-2/3 mx-auto bg-white/20" />
+      <div className={`w-72 p-6 animate-pulse ${glassCard}`} style={glassStyle}>
+        <div className="flex items-center gap-4">
+          <div className="w-[72px] h-[72px] rounded-full shrink-0 bg-white/40" />
+          <div className="flex flex-col gap-2 flex-1">
+            <div className="h-4 rounded-full w-3/4 bg-white/30" />
+            <div className="h-3 rounded-full w-1/2 bg-white/20" />
+          </div>
+        </div>
       </div>
     );
   }
 
   if (!session?.user) {
     return (
-      <div className={`w-72 p-8 ${glassCard}`} style={glassStyle}>
+      <div className={`w-72 p-6 ${glassCard}`} style={glassStyle}>
         <p className="text-[11px] text-rose-500 font-mono tracking-tighter uppercase font-black">
           // Session Terminated
         </p>
@@ -58,7 +59,7 @@ export default function UserCard() {
       initial={{ opacity: 0, scale: 0.92, y: 12 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-      className={`w-72 ${glassCard}`}
+      className={`w-72 ${glassCard} flex items-center`}
       style={glassStyle}
     >
       {/* Top specular edge */}
@@ -83,10 +84,10 @@ export default function UserCard() {
         }}
       />
 
-      <div className="p-7 flex items-center gap-5 relative z-20">
+      <div className="p-6 flex items-center gap-4 relative z-20">
         {/* Avatar */}
-        <div className="relative flex-shrink-0">
-          {/* Rotating conic ring — warm rose / amber / coral */}
+        <div className="relative shrink-0">
+          {/* Rotating conic ring */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
@@ -97,7 +98,7 @@ export default function UserCard() {
             }}
           />
 
-          {/* Soft glow behind ring */}
+          {/* Soft glow */}
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
@@ -151,13 +152,19 @@ export default function UserCard() {
         </div>
 
         {/* Text */}
-        <div className="flex flex-col gap-[3px]">
+        <div className="flex flex-col gap-1 min-w-0">
           <h2
-            className="text-[1.1rem] font-black tracking-tight"
+            className="text-[1.05rem] font-black tracking-tight truncate"
             style={{ color: "rgba(30,20,20,0.85)" }}
           >
             {name ?? "Anonymous"}
           </h2>
+          <p
+            className="text-[11px] font-mono font-medium"
+            style={{ color: "rgba(30,20,20,0.4)" }}
+          >
+            Online
+          </p>
         </div>
       </div>
     </motion.div>

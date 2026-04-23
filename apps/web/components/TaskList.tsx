@@ -12,7 +12,7 @@ export default function TasksList({ tasks = [] }: { tasks?: Task[] }) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 bg-transparent">
       {tasks.map((task) => (
         <div
           key={task._id}
