@@ -30,11 +30,11 @@ export default function Sidebar() {
       initial={{ opacity: 0, x: -24 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }}
-      className="w-64 p-5 flex flex-col h-full relative overflow-hidden rounded-[1.75rem]"
+      className="w-64 p-5 flex flex-col  relative overflow-hidden rounded-[1.75rem]"
       style={glassStyle}
     >
-      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/[0.06] to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-black/6 to-transparent pointer-events-none z-10" />
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
         transition={{

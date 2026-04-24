@@ -126,7 +126,7 @@ const glassStyle = {
         className="relative overflow-hidden w-full"
       >
         {/* Top specular */}
-        <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
 
         <div className="p-5 flex flex-col gap-4">
           {/* Header */}
@@ -161,7 +161,7 @@ const glassStyle = {
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-black/[0.05] to-transparent" />
+          <div className="h-px bg-linear-to-r from-transparent via-black/5 to-transparent" />
 
           {/* Fields */}
           <div className="flex flex-col gap-3">
@@ -278,7 +278,7 @@ const glassStyle = {
           >
             {canSubmit && (
               <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
+                className="absolute inset-0 bg-linear-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "200%" }}
                 transition={{ duration: 0.5 }}
@@ -327,7 +327,7 @@ const glassStyle = {
         </div>
 
         {/* Bottom specular */}
-        <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/[0.04] to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-black/4 to-transparent pointer-events-none" />
       </motion.form>
     </div>
   );

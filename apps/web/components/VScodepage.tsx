@@ -36,8 +36,8 @@ function GlassCard({
       className={`relative overflow-hidden rounded-[1.75rem] ${className}`}
       style={glassStyle}
     >
-      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
-      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/[0.06] to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-black/6 to-transparent pointer-events-none z-10" />
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
         transition={{
@@ -183,7 +183,7 @@ export default function VSCodePage() {
             </div>
 
             {/* Rows */}
-            <div className="max-h-[420px] overflow-y-auto space-y-0 pr-0.5">
+            <div className="max-h-105 overflow-y-auto space-y-0 pr-0.5">
               {sortedSessions.map((s, i) => {
                 const mins = Math.round(s.duration / (1000 * 60));
                 const date = new Date(s.startTime).toLocaleDateString("en-US", {
