@@ -35,12 +35,11 @@ export default function CreateProjectForm() {
 
   const canSubmit = !!title.trim() && !loading;
 
-
   const fieldStyle = (active: boolean): React.CSSProperties => ({
     background: active ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.55)",
-    border: `1px solid ${active ? "rgba(251,146,60,0.4)" : "rgba(180,170,200,0.2)"}`,
+    border: `1px solid ${active ? "rgba(249,115,22,0.35)" : "rgba(255,255,255,0.45)"}`,
     boxShadow: active
-      ? "0 0 0 3px rgba(251,146,60,0.08), inset 0 1px 2px rgba(255,255,255,0.9)"
+      ? "0 0 0 3px rgba(249,115,22,0.08), inset 0 1px 2px rgba(255,255,255,0.9)"
       : "inset 0 1px 2px rgba(255,255,255,0.7)",
     backdropFilter: "blur(8px)",
     transition: "all 0.2s ease",
@@ -48,23 +47,21 @@ export default function CreateProjectForm() {
     borderRadius: "10px",
   });
 
-const glassStyle = {
-  background: "rgba(255, 255, 255, 0.22)",
-  backdropFilter: "blur(24px) saturate(180%)",
-  WebkitBackdropFilter: "blur(24px) saturate(180%)",
-  borderRadius: "1.3rem",
-  boxShadow:
-    "0 8px 32px rgba(0,0,0,0.08), inset 0 1px 1px rgba(255,255,255,0.55), inset 0 -1px 1px rgba(0,0,0,0.04)",
-};
+  const glassStyle: React.CSSProperties = {
+    background: "rgba(255, 255, 255, 0.18)",
+    backdropFilter: "blur(32px) saturate(200%)",
+    WebkitBackdropFilter: "blur(32px) saturate(200%)",
+    borderRadius: "1.75rem",
+    boxShadow:
+      "0 8px 40px rgba(0,0,0,0.1), inset 0 1.5px 1px rgba(255,255,255,0.65), inset 0 -1px 1px rgba(0,0,0,0.05)",
+    border: "1px solid rgba(255,255,255,0.45)",
+  };
 
-  // Border perimeter animation
-  // Card is ~320px wide, ~~380px tall → perimeter ≈ 1400px
-  // We draw an SVG rect that traces the border
-  const R = 20; // border-radius matches rounded-[20px]
+  const R = 20;
 
   return (
     <div className="relative w-[320px]" style={glassStyle}>
-      {/* ── Animated corner-tracing line ── */}
+      {/* ── Animated border trace ── */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none z-20"
         style={{ borderRadius: R }}
@@ -78,7 +75,7 @@ const glassStyle = {
           rx={R - 1}
           ry={R - 1}
           fill="none"
-          stroke="rgba(251,146,60,0.18)"
+          stroke="rgba(249,115,22,0.18)"
           strokeWidth="1"
         />
         <rect
@@ -89,13 +86,12 @@ const glassStyle = {
           rx={R - 1}
           ry={R - 1}
           fill="none"
-          stroke="rgb(251,146,60)"
+          stroke="rgba(249,115,22,0.85)"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeDasharray="60 9999"
           strokeDashoffset="0"
         >
-          <animateTransform attributeName="" type="" />
           <animate
             attributeName="stroke-dashoffset"
             from="0"
@@ -120,21 +116,39 @@ const glassStyle = {
         initial={{ opacity: 0, y: 14, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
-          duration: 0.5,
-          ease: [0.23, 1, 0.32, 1] as [number, number, number, number],
+          duration: 0.55,
+          ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number],
         }}
         className="relative overflow-hidden w-full"
       >
-        {/* Top specular */}
-        <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/90 to-transparent pointer-events-none" />
+        {/* Top shine line */}
+        <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+        {/* Bottom line */}
+        <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/[0.06] to-transparent pointer-events-none z-10" />
 
-        <div className="p-5 flex flex-col gap-4">
+        {/* Shimmer sweep */}
+        <motion.div
+          animate={{ x: ["-200%", "350%"] }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear",
+            repeatDelay: 6,
+          }}
+          className="absolute inset-0 pointer-events-none -skew-x-12 z-10"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
+          }}
+        />
+
+        <div className="p-5 flex flex-col gap-4 relative z-20">
           {/* Header */}
           <div className="flex flex-col gap-0.5">
             <span
-              className="text-[10px] uppercase tracking-[0.18em] font-medium"
+              className="text-[10px] uppercase tracking-[0.18em] font-semibold"
               style={{
-                color: "#fb923c",
+                color: "rgba(249,115,22,0.85)",
                 fontFamily: "'DM Mono', 'Fira Mono', monospace",
               }}
             >
@@ -143,7 +157,7 @@ const glassStyle = {
             <h2
               className="text-[1rem] font-bold tracking-tight"
               style={{
-                color: "rgba(40,30,30,0.85)",
+                color: "rgba(30,20,20,0.85)",
                 fontFamily: "'DM Mono', monospace",
               }}
             >
@@ -152,7 +166,7 @@ const glassStyle = {
             <p
               className="text-[11px] leading-relaxed mt-0.5"
               style={{
-                color: "rgba(80,70,80,0.42)",
+                color: "rgba(30,20,20,0.38)",
                 fontFamily: "'DM Mono', monospace",
               }}
             >
@@ -161,20 +175,20 @@ const glassStyle = {
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-black/[0.05] to-transparent" />
+          <div className="h-px" style={{ background: "rgba(0,0,0,0.05)" }} />
 
           {/* Fields */}
           <div className="flex flex-col gap-3">
             {/* Title */}
             <div className="flex flex-col gap-1.5">
               <label
-                className="text-[10px] uppercase tracking-[0.13em] font-medium"
+                className="text-[10px] uppercase tracking-[0.13em] font-semibold"
                 style={{
-                  color: "rgba(80,70,80,0.42)",
+                  color: "rgba(30,20,20,0.38)",
                   fontFamily: "'DM Mono', monospace",
                 }}
               >
-                Title <span style={{ color: "rgba(251,146,60,0.7)" }}>*</span>
+                Title <span style={{ color: "rgba(249,115,22,0.7)" }}>*</span>
               </label>
               <input
                 type="text"
@@ -186,27 +200,27 @@ const glassStyle = {
                 className="w-full px-3 py-2 text-sm"
                 style={{
                   ...fieldStyle(focused === "title"),
-                  color: "rgba(40,30,30,0.82)",
+                  color: "rgba(30,20,20,0.82)",
                   fontFamily: "'DM Mono', monospace",
                   fontSize: "12px",
                 }}
               />
-              <style>{`input::placeholder,textarea::placeholder{color:rgba(120,110,130,0.32);}`}</style>
+              <style>{`input::placeholder, textarea::placeholder { color: rgba(30,20,20,0.25); }`}</style>
             </div>
 
             {/* Description */}
             <div className="flex flex-col gap-1.5">
               <label
-                className="text-[10px] uppercase tracking-[0.13em] font-medium"
+                className="text-[10px] uppercase tracking-[0.13em] font-semibold"
                 style={{
-                  color: "rgba(80,70,80,0.42)",
+                  color: "rgba(30,20,20,0.38)",
                   fontFamily: "'DM Mono', monospace",
                 }}
               >
                 Description{" "}
                 <span
                   style={{
-                    color: "rgba(80,70,80,0.26)",
+                    color: "rgba(30,20,20,0.25)",
                     fontSize: "10px",
                     textTransform: "none",
                     letterSpacing: 0,
@@ -225,7 +239,7 @@ const glassStyle = {
                 className="w-full px-3 py-2 text-sm resize-none"
                 style={{
                   ...fieldStyle(focused === "desc"),
-                  color: "rgba(40,30,30,0.72)",
+                  color: "rgba(30,20,20,0.72)",
                   fontFamily: "'DM Mono', monospace",
                   fontSize: "12px",
                   lineHeight: "1.55",
@@ -240,7 +254,7 @@ const glassStyle = {
                     transition={{ duration: 0.15 }}
                     className="text-right"
                     style={{
-                      color: "rgba(80,70,80,0.28)",
+                      color: "rgba(30,20,20,0.28)",
                       fontFamily: "'DM Mono', monospace",
                       fontSize: "10px",
                     }}
@@ -258,16 +272,16 @@ const glassStyle = {
             disabled={!canSubmit}
             whileHover={canSubmit ? { scale: 1.02 } : {}}
             whileTap={canSubmit ? { scale: 0.97 } : {}}
-            className="relative w-full flex items-center justify-center gap-2 py-2.5 text-[11px] font-medium tracking-[0.15em] uppercase overflow-hidden"
+            className="relative w-full flex items-center justify-center gap-2 py-2.5 text-[11px] font-semibold tracking-[0.15em] uppercase overflow-hidden"
             style={{
               borderRadius: "10px",
               background: canSubmit
-                ? "rgba(251,146,60,0.1)"
+                ? "rgba(249,115,22,0.1)"
                 : "rgba(0,0,0,0.03)",
               border: canSubmit
-                ? "1px solid rgba(251,146,60,0.28)"
-                : "1px solid rgba(0,0,0,0.06)",
-              color: canSubmit ? "#fb923c" : "rgba(80,70,80,0.22)",
+                ? "1px solid rgba(249,115,22,0.25)"
+                : "1px solid rgba(255,255,255,0.45)",
+              color: canSubmit ? "rgba(249,115,22,0.9)" : "rgba(30,20,20,0.22)",
               cursor: canSubmit ? "pointer" : "not-allowed",
               fontFamily: "'DM Mono', monospace",
               boxShadow: canSubmit
@@ -276,12 +290,17 @@ const glassStyle = {
               transition: "all 0.2s ease",
             }}
           >
+            {/* Button shimmer on hover */}
             {canSubmit && (
               <motion.span
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -skew-x-12 pointer-events-none"
+                className="absolute inset-0 -skew-x-12 pointer-events-none"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "200%" }}
                 transition={{ duration: 0.5 }}
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+                }}
               />
             )}
 
@@ -299,7 +318,7 @@ const glassStyle = {
                     <motion.span
                       key={i}
                       className="w-1 h-1 rounded-full block"
-                      style={{ background: "#fb923c" }}
+                      style={{ background: "rgba(249,115,22,0.85)" }}
                       animate={{ opacity: [0.3, 1, 0.3] }}
                       transition={{
                         duration: 0.8,
@@ -325,9 +344,6 @@ const glassStyle = {
             </AnimatePresence>
           </motion.button>
         </div>
-
-        {/* Bottom specular */}
-        <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/[0.04] to-transparent pointer-events-none" />
       </motion.form>
     </div>
   );
