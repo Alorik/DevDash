@@ -124,8 +124,6 @@ export default function VSCodePage() {
 
   return (
     <div className="space-y-6 px-4">
-
-
       {/* ── Recent Sessions (full table) ── */}
       <GlassCard delay={0.38}>
         <div className="flex items-center justify-between mb-4">
@@ -167,13 +165,16 @@ export default function VSCodePage() {
           <>
             {/* Table header */}
             <div
-              className="grid grid-cols-4 pb-2 mb-1"
-              style={{ borderBottom: "1px solid rgba(0,0,0,0.07)" }}
+              className="grid pb-2 mb-1"
+              style={{
+                gridTemplateColumns: "2fr 1.5fr 2fr 1fr",
+                borderBottom: "1px solid rgba(0,0,0,0.07)",
+              }}
             >
               {["Project", "Language", "Date & Time", "Duration"].map((h) => (
                 <span
                   key={h}
-                  className="text-[9px] font-mono uppercase tracking-widest font-bold"
+                  className="text-[9px] font-mono uppercase tracking-widest font-bold px-3 first:pl-0"
                   style={{ color: "rgba(30,20,20,0.3)" }}
                 >
                   {h}
@@ -200,23 +201,26 @@ export default function VSCodePage() {
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 + i * 0.02, duration: 0.28 }}
-                    className="grid grid-cols-4 py-2.5 items-center"
-                    style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}
+                    className="grid py-2.5 items-center"
+                    style={{
+                      gridTemplateColumns: "2fr 1.5fr 2fr 1fr",
+                      borderBottom: "1px solid rgba(0,0,0,0.04)",
+                    }}
                   >
                     <span
-                      className="text-[12px] font-mono font-bold truncate pr-2"
+                      className="text-[12px] font-mono font-bold truncate px-3 first:pl-0 pl-0"
                       style={{ color: "rgba(30,20,20,0.75)" }}
                     >
                       {s.project || "unknown"}
                     </span>
                     <span
-                      className="text-[11px] font-mono truncate pr-2"
+                      className="text-[11px] font-mono truncate px-3"
                       style={{ color: "rgba(30,20,20,0.5)" }}
                     >
                       {s.language || "—"}
                     </span>
                     <span
-                      className="text-[10px] font-mono"
+                      className="text-[10px] font-mono px-3"
                       style={{ color: "rgba(30,20,20,0.38)" }}
                     >
                       {date} · {time}

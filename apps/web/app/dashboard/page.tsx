@@ -4,6 +4,7 @@ import UserCard from "@/components/UseCard";
 import TimeCard from "@/components/TimeCard";
 import VSCodePage from "@/components/VScodepage";
 import SpotifyCard from "@/components/Spotify";
+import Sidebar from "@/components/Sidebar";
 
 export default function DashboardPage() {
   return (
@@ -20,14 +21,21 @@ export default function DashboardPage() {
         `,
       }}
     >
-      <div className="flex gap-12 mb-12">
-        <UserCard />
-        <TimeCard />
-        <SpotifyCard />
-      </div>
-      <div className="flex ">
-        <ContributionHeatmap />
-        {/* <VSCodePage /> */}
+      <div className="flex">
+        <div className="flex-col ">
+          <div className="flex gap-12 mb-12 justify-between">
+            <UserCard />
+            <TimeCard />
+            <SpotifyCard />
+          </div>
+          <div className="flex">
+            <ContributionHeatmap />
+          </div>
+        </div>
+        <div className="mt-16">
+          {/* <VSCodePage /> */}
+          <Sidebar />
+        </div>
       </div>
     </main>
   );
