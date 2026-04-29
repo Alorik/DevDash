@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ListTodo, Folder, Activity, Home } from "lucide-react";
-import { motion } from "framer-motion";
+import { ListTodo, Folder, Activity } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 const navItems = [
@@ -33,11 +33,8 @@ export default function Sidebar() {
       className="w-64 p-5 flex flex-col h-full relative overflow-hidden rounded-[1.75rem]"
       style={glassStyle}
     >
-      {/* Top shine line */}
       <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
-      {/* Bottom line */}
       <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/[0.06] to-transparent pointer-events-none z-10" />
-      {/* Shimmer sweep */}
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
         transition={{
@@ -52,23 +49,6 @@ export default function Sidebar() {
             "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
         }}
       />
-
-      {/* Logo */}
-      <div className="relative z-20 mb-10">
-        <p
-          className="text-[10px] font-mono uppercase tracking-[0.16em] mb-1 font-semibold"
-          style={{ color: "rgba(30,20,20,0.38)" }}
-        >
-          Dashboard
-        </p>
-        <h1
-          className="text-xl font-black tracking-tight"
-          style={{ color: "rgba(30,20,20,0.85)" }}
-        >
-          DevsDash
-        </h1>
-      </div>
-
       {/* Nav */}
       <nav className="flex flex-col relative z-20">
         <p
@@ -100,7 +80,7 @@ export default function Sidebar() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-3 px-4 py-3 rounded-2xl transition-colors relative overflow-hidden group"
+                  className="flex items-center gap-3 px-4 py-3 rounded-2xl relative overflow-hidden"
                   style={
                     isActive
                       ? {
@@ -108,37 +88,49 @@ export default function Sidebar() {
                           border: "1px solid rgba(249,115,22,0.25)",
                           boxShadow: "inset 0 1px 1px rgba(255,255,255,0.5)",
                         }
-                      : {
-                          border: "1px solid transparent",
-                        }
+                      : { border: "1px solid transparent" }
                   }
                 >
-                  {/* Hover fill */}
-                  {!isActive && (
-                    <span
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                      style={{ background: "rgba(0,0,0,0.04)" }}
-                    />
-                  )}
-
                   <Icon
                     size={16}
                     style={{
                       color: isActive
                         ? "rgba(249,115,22,0.85)"
-                        : "rgba(30,20,20,0.4)",
+                        : hoveredIndex === index
+                          ? "rgba(249,115,22,0.7)"
+                          : "rgba(30,20,20,0.4)",
+                      transition: "color 0.2s",
                     }}
                   />
+
                   <span
-                    className="font-mono text-[12px] font-bold tracking-wide"
+                    className="font-mono text-[12px] font-bold tracking-wide transition-colors duration-200"
                     style={{
                       color: isActive
                         ? "rgba(249,115,22,0.9)"
-                        : "rgba(30,20,20,0.55)",
+                        : hoveredIndex === index
+                          ? "rgba(249,115,22,0.75)"
+                          : "rgba(30,20,20,0.55)",
                     }}
                   >
                     {item.name}
                   </span>
+
+                  {/* "go to →" hint text that appears on hover */}
+                  <AnimatePresence>
+                    {!isActive && hoveredIndex === index && (
+                      <motion.span
+                        initial={{ opacity: 0, x: -6 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -4 }}
+                        transition={{ duration: 0.18 }}
+                        className="ml-auto font-mono text-[10px] font-semibold tracking-wide"
+                        style={{ color: "rgba(249,115,22,0.6)" }}
+                      >
+                        go to →
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
 
                   {isActive && (
                     <motion.div
@@ -153,22 +145,6 @@ export default function Sidebar() {
                     />
                   )}
                 </Link>
-
-                {/* Breadcrumb-style underline on hover (non-active items) */}
-                {!isActive && hoveredIndex === index && (
-                  <motion.div
-                    layoutId="hover-underline"
-                    className="absolute left-4 right-4 rounded-full"
-                    style={{
-                      bottom: "2px",
-                      height: "1.5px",
-                      background: "rgba(249,115,22,0.5)",
-                    }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  />
-                )}
               </motion.li>
             );
           })}

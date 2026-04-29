@@ -33,8 +33,7 @@ export default function DashboardPage() {
           </div>
         </div>
         <div className="mt-16">
-          {/* <VSCodePage /> */}
-          <Sidebar />
+          <VSCodePage />
         </div>
       </div>
     </main>
