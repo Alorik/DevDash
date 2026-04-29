@@ -21,7 +21,7 @@ export async function getAccessToken() {
 
   const data = await res.json();
 
-  console.log("TOKEN RESPONSE:", data); 
+  console.log("TOKEN RESPONSE:", data);
 
   if (!res.ok) {
     throw new Error("Failed to refresh token");
@@ -46,8 +46,6 @@ export async function getLastPlayedSong() {
   if (!res.ok) {
     throw new Error(`Spotify API Error: ${res.status}`);
   }
-
-
 
   const data = JSON.parse(text);
 

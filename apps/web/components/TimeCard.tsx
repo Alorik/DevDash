@@ -51,14 +51,14 @@ export default function TimeCard() {
       initial={{ opacity: 0, scale: 0.92, y: 12 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-      className="w-72 rounded-[2rem] border border-white/40 overflow-hidden relative"
+      className="w-72 rounded-4xl border border-white/40 overflow-hidden relative"
       style={glassStyle}
     >
       {/* Top specular edge */}
-      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
 
       {/* Bottom shadow line */}
-      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
 
       {/* Light sweep */}
       <motion.div

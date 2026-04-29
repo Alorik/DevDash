@@ -48,7 +48,7 @@ export default function ContributionHeatmap() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex items-center justify-center h-48 w-full rounded-[2rem] border border-white/40"
+        className="flex items-center justify-center h-48 w-full rounded-4xl border border-white/40"
         style={glassStyle}
       >
         <p
@@ -69,14 +69,14 @@ export default function ContributionHeatmap() {
       initial={{ opacity: 0, scale: 0.97, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1], delay: 0.1 }}
-      className="relative rounded-[2rem] border border-white/40 overflow-hidden inline-block font-sans"
+      className="relative rounded-4xl border border-white/40 overflow-hidden inline-block font-sans"
       style={glassStyle}
     >
       {/* Top specular edge */}
-      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
 
       {/* Bottom shadow line */}
-      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
 
 
       {/* Light sweep */}
@@ -125,7 +125,7 @@ export default function ContributionHeatmap() {
               {[0, 2, 5, 9, 11].map((lvl) => (
                 <div
                   key={lvl}
-                  className={`w-2.5 h-2.5 rounded-[2px] ${getColorClass(lvl)}`}
+                  className={`w-2.5 h-2.5 rounded-xs ${getColorClass(lvl)}`}
                 />
               ))}
               <span>More</span>
@@ -141,7 +141,7 @@ export default function ContributionHeatmap() {
             {months.map((month, i) => (
               <div
                 key={i}
-                className="text-[10px] font-bold font-mono min-w-[14px]"
+                className="text-[10px] font-bold font-mono min-w-3.5"
                 style={{
                   width: "calc(100% / 12)",
                   color: "rgba(30,20,20,0.35)",
@@ -166,9 +166,9 @@ export default function ContributionHeatmap() {
             </div>
 
             {/* Heatmap cells */}
-            <div className="flex gap-[3px]">
+            <div className="flex gap-0.75">
               {weeks.map((week, i) => (
-                <div key={i} className="flex flex-col gap-[3px]">
+                <div key={i} className="flex flex-col gap-0.75">
                   {week.map((day) => (
                     <div
                       key={day.date}
@@ -179,7 +179,7 @@ export default function ContributionHeatmap() {
                         month: "long",
                       })}`}
                       className={`
-                        w-3.5 h-3.5 rounded-[2px]
+                        w-3.5 h-3.5 rounded-xs
                         transition-all duration-150 ease-out
                         hover:scale-125 cursor-pointer
                         hover:relative hover:z-10

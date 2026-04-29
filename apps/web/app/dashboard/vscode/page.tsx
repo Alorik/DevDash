@@ -45,9 +45,9 @@ function GlassCard({
       style={glassStyle}
     >
       {/* Top specular highlight */}
-      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-white/80 to-transparent pointer-events-none z-10" />
       {/* Bottom shadow line */}
-      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-gradient-to-r from-transparent via-black/8 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[6%] right-[6%] h-px bg-linear-to-r from-transparent via-black/8 to-transparent pointer-events-none z-10" />
       {/* Light sweep */}
       <motion.div
         animate={{ x: ["-200%", "350%"] }}
@@ -192,7 +192,7 @@ export default function DashboardPage() {
                     </div>
                     {/* Bar track */}
                     <div
-                      className="w-full h-[6px] rounded-full overflow-hidden"
+                      className="w-full h-1.5 rounded-full overflow-hidden"
                       style={{ background: "rgba(0,0,0,0.07)" }}
                     >
                       <motion.div
@@ -228,7 +228,7 @@ export default function DashboardPage() {
               No sessions yet...
             </p>
           ) : (
-            <div className="space-y-0 mt-2 max-h-[260px] overflow-y-auto pr-0.5">
+            <div className="space-y-0 mt-2 max-h-65 overflow-y-auto pr-0.5">
               {sortedSessions.slice(0, 20).map((s, i) => {
                 const mins = Math.round(s.duration / (1000 * 60));
                 const date = new Date(s.startTime).toLocaleDateString("en-US", {
@@ -264,7 +264,7 @@ export default function DashboardPage() {
                       </span>
                     </div>
                     <span
-                      className="text-[11px] font-mono font-black ml-3 flex-shrink-0 px-2.5 py-0.5 rounded-full"
+                      className="text-[11px] font-mono font-black ml-3 shrink-0 px-2.5 py-0.5 rounded-full"
                       style={{
                         background: "rgba(249,115,22,0.1)",
                         color: "rgba(249,115,22,0.85)",

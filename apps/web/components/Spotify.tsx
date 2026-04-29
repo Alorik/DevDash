@@ -158,7 +158,7 @@ function Card() {
         {loading && (
           <div className="flex items-center gap-4 animate-pulse">
             <div
-              className="w-16 h-16 rounded-xl flex-shrink-0"
+              className="w-16 h-16 rounded-xl shrink-0"
               style={{ background: "rgba(0,0,0,0.08)" }}
             />
             <div className="flex flex-col gap-2 flex-1">

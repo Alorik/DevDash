@@ -10,7 +10,6 @@ export async function GET() {
         message: "No recent song found",
       });
     }
-
     return NextResponse.json(song);
   } catch (err) {
     console.error(err);

@@ -32,7 +32,7 @@ export default function UserCard() {
     return (
       <div className={`w-72 p-6 animate-pulse ${glassCard}`} style={glassStyle}>
         <div className="flex items-center gap-4">
-          <div className="w-[72px] h-[72px] rounded-full shrink-0 bg-white/40" />
+          <div className="w-18 h-18 rounded-full shrink-0 bg-white/40" />
           <div className="flex flex-col gap-2 flex-1">
             <div className="h-4 rounded-full w-3/4 bg-white/30" />
             <div className="h-3 rounded-full w-1/2 bg-white/20" />
@@ -63,10 +63,10 @@ export default function UserCard() {
       style={glassStyle}
     >
       {/* Top specular edge */}
-      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
+      <div className="absolute top-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-white/70 to-transparent pointer-events-none z-10" />
 
       {/* Bottom subtle shadow line */}
-      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-[8%] right-[8%] h-px bg-linear-to-r from-transparent via-black/10 to-transparent pointer-events-none z-10" />
 
       {/* Refractive light sweep */}
       <motion.div
@@ -91,7 +91,7 @@ export default function UserCard() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-[-3px] rounded-full z-0"
+            className="absolute -inset-0.75 rounded-full z-0"
             style={{
               background:
                 "conic-gradient(from 0deg, rgba(251,113,133,0.9), rgba(251,191,36,0.8), rgba(249,115,22,0.7), rgba(244,63,94,0.85), rgba(251,113,133,0.9))",
@@ -102,7 +102,7 @@ export default function UserCard() {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-[-6px] rounded-full z-0 opacity-40"
+            className="absolute -inset-1.5 rounded-full z-0 opacity-40"
             style={{
               background:
                 "conic-gradient(from 0deg, rgba(251,113,133,0.5), rgba(251,191,36,0.4), rgba(249,115,22,0.4), rgba(251,113,133,0.5))",
@@ -115,11 +115,11 @@ export default function UserCard() {
             <img
               src={image}
               alt={name ?? "user"}
-              className="w-[72px] h-[72px] rounded-full object-cover relative z-10 border-2 border-white/50 shadow-lg"
+              className="w-18 h-18 rounded-full object-cover relative z-10 border-2 border-white/50 shadow-lg"
             />
           ) : (
             <div
-              className="w-[72px] h-[72px] rounded-full flex items-center justify-center font-black text-lg relative z-10 border-2 border-white/50 shadow-lg"
+              className="w-18 h-18 rounded-full flex items-center justify-center font-black text-lg relative z-10 border-2 border-white/50 shadow-lg"
               style={{
                 background:
                   "linear-gradient(135deg, rgba(251,113,133,0.25), rgba(251,191,36,0.15))",
