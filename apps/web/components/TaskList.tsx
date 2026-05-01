@@ -5,7 +5,7 @@ interface Task {
   title: string;
   completed: boolean;
 }
-
+// 
 export default function TasksList({ tasks = [] }: { tasks?: Task[] }) {
   if (tasks.length === 0) {
     return <p className="text-gray-500">No tasks found</p>;

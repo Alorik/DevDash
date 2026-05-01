@@ -15,15 +15,6 @@ export default async function Projects() {
 
   const userId = session.user.id;
 
-  const glassStyle: React.CSSProperties = {
-    background: "rgba(255,225,225,0.52)",
-    backdropFilter: "blur(28px) saturate(180%)",
-    WebkitBackdropFilter: "blur(28px) saturate(180%)",
-    border: "1px solid rgba(255,255,255,0.72)",
-    boxShadow:
-      "0 4px 24px rgba(160,140,180,0.08), inset 0 1.5px 1px rgba(255,255,255,0.8), inset 0 -1px 1px rgba(0,0,0,0.03)",
-  };
-
   await connectDb();
 
   const projects = await Project.find({ userId }).lean();
@@ -45,18 +36,30 @@ export default async function Projects() {
           #bfc5d3
         `,
       }}
-      className="p-6 space-y-6 min-h-screen"
+      className="min-h-screen p-6"
     >
       {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold   text-[#fb923c]">Projects</h1>
+      <div className="mb-6">
+        <h1
+          className="text-2xl font-black font-mono tracking-tight"
+          style={{ color: "rgba(30,20,20,0.85)" }}
+        >
+          Projects
+        </h1>
       </div>
 
-      {/* 🔥 Create Project Form */}
-      <CreateProjectForm />
+      {/* Main layout: form left, list right */}
+      <div className="flex gap-6 items-start">
+        {/* Left — Create form (fixed width) */}
+        <div className="flex-shrink-0">
+          <CreateProjectForm />
+        </div>
 
-      {/* Projects List */}
-      <ProjectsList projects={formattedProjects} />
+        {/* Right — Projects grid (2 per row) */}
+        <div className="flex-1 min-w-0">
+          <ProjectsList projects={formattedProjects} />
+        </div>
+      </div>
     </div>
   );
 }
