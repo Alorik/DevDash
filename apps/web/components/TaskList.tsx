@@ -16,7 +16,7 @@ export default function TasksList({ tasks = [] }: { tasks?: Task[] }) {
       {tasks.map((task) => (
         <div
           key={task._id}
-          className="p-4 border rounded-lg flex justify-between"
+          className="p-4 border rounded-lg flex justify-between p-0"
         >
           <span>{task.title}</span>
           <span>{task.completed ? "✅" : "⏳"}</span>
